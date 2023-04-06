@@ -1,1 +1,69 @@
 # PortableWashingMachine_BAE305-Project
+The following report contains the documentaion of the construction of a portable washing machine for the class BAE 305. The  following people contributed to the project: Tiffany Coogle, Maggie Barnes, Elyssa Roberts, and Hunter Walters.
+
+## Summary
+The goal of our project was to create a portable washing machine. The portable washing machine is applicable for situations in which the user has only a few small items of clothing to wash, and does not want to use a full size washing machine for them. Because of this, the portable washing machine that was created is most suitable for items such as socks, underwear, etc. The portable washing machine body is made from a 2 gallon bucket, and contains two pumps, a valve, a motor, and a 3D printed agitator. A RedBoard was used to control the operation of each component of the washing machine, and was mounted to the ________ of the system. The washing machine has three cycles: 1, 2, and 3 minutes, which each fill and drain twice to wash the clothes, remove the dirty water, then rinse. The user can select the desired cycle by inputing their selection into the serial monitor of the computer connected to the RedBoard. Then, when the user is ready, a button can be used to start the cycle. At the end of the cycle, a buzzer beeps to notify the user to remove their clothes from the washing machine. Should the user need to stop the cyle beofre the specified duration, the button can be pressed again to stop the cycle midway. This project was initiated in January 2023 and progess was tracked using the SCUM method. The projected reached complettion on _____ and the following results were found _____ .
+
+## Design Description 
+
+### Materials
+* 4 ___ relays
+* 4 ___ relay bases
+* __ wires
+* 3 TIP 31C Transistors
+* 3 ___ ohm resistors
+* RedBoard
+* Computer with Arduino IDE downloaded
+* 1 Piezo Buzzer
+* 1 Button
+* 2 ___ pumps
+* ___ vave
+* ___ od. tubing
+* LS-00086 OSEPP Electronics LTD DC Motor
+* ___ Power Supply
+* ___ Connectors
+* Crimper
+* 2 Gallon Bucket with Lid
+* 3D Printed Agitator
+* 3D Printed Shaft Connector
+* ___ od. PVC Pipe
+*
+
+### Design
+
+#### Physical Design
+When first creating the design for the washing machine a five gallon bucket was the selected size for the unit. However, after calcuating the torque needed to move that much water plus clothing and considering the voltage requirements and prices, a size reevaluation occured. A five gallon bucket half full of water was estimated at about 8 pounds without the weight of clothing. With a half foot of diameter estimated, aroudn 4 lb-ft of torque would be needed at the minimum. The motors rated at this torque were very expensive and often required higher voltages. In the end, a 2 gallon bucket was decided on, with the intention to not fill it completely. Based on the size adjustment, a motor was chosen. The LS-00086 DC motor was chosen due to its low price, low voltage, and decent torque rating of 2.18 lb.-ft.
+
+#### Circuit Design
+When designing the washing machine, an important factor was being able to control the operation of the pumps, motor, and valve, which all operated at 12 volts DC. This voltage could not be supplied from the RedBoard alone, so relays were used to switch them on and off. The components of the washing machine were connected to the switch connected terminals on the relay. A 12 volt supply was connected to these terminals as well. When the relay was turned on, the switch would close, allowing the 12 volts to flow to ground, and subsequently turning on the desired component. 
+
+To turn the relay on and off, a controllable signal was needed on the non-switch connectted terminals. However, the current needed to turn on the relay was calculated to be _ mA, which was too high for the RedBoard to produce. To acheive the desired current, tranistors were used. The TIP31C models were used in the circuit. Four digital output pins (7, 8,12, and 13) from the RedBoard were connected to the bases of the tranisotrs. A 12 volt supply was connected to the collector on the transistor. The emitter was connected to the relay. When the redBoard sent out a 5 volt signal to the transitor, the 12 volts attched to the tranistor would be allowed to flow through the relay to ground. This higher voltage was able to produce enough current to trigger the relay.
+
+The design of the circuit also inlcuded a piezo buzzer and a button. They were connected to the RedBoard via pins 5 and 2 respectively. When pin 5 sent out a signal, the buzzer would play a tone. Pin 2, whcih was connectted to the button was set to input pullup mode. This meant that the the pin would read high until the button was pressed, then it would read low. The input pullup resistor mode was used to prevent floating values.  
+
+PUT IN SCHEMATIC HERE
+
+#### Code
+The code that operated the circuit was composed of if and else if statements. First, the pins were set as constant integer variables. The variable "CycleType" was also initialized as a string so it could hold other strings. In the void setup loop, the all pinmodes except the pin for the button were set to output. The button pin was set to input pullup. In this loop, serial connection was aslo created by using the Serial.begin command and setting the baud rate to 9600. Finally, the setup loop was concluded by displaying a message to prompt user input to choose a cycle type.
+
+The main loop was comprised of many if and else statements. The blanketing if statemnt told the program to start if the user input something into the serial monitor. The string variable "CycleType" stored the input unitl "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be trigered. These three loops had varying messages and times to correspond with the cycle type. 
+
+To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, waiting a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. A function for the beep at the end of the cycle was also created which included the tone command so the pin, frequency, and duration could be selected.
+
+#### 3D Printing Design
+
+
+## Testing
+#### Construction
+
+
+During the construction of the inital circuit, the position of the relay relative to the tranistor was adjusted. At first, the relay was positioned directly after the voltage suplly and before the emitter. However, the relay caused a voltage drop before the transitor which was so low, that the voltage differnce did not allow current to flow from the power supply to ground. To fix this, the relay was repositioned after the emmiter and before the ground. 
+#### Pump Flow Rate Testing
+
+#### Motor Speed Testing
+
+#### Cycle Testing
+
+## Design Results Discussion
+
+## Test Results Discussion))
