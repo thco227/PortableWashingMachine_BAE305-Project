@@ -59,15 +59,15 @@ Our impeller design is simple: it's a flat disc that rises in the center to form
 
 To create this part, we used the 3D printers available at the Innovation Center at the University of Kentucky. The printer used was the Prusa Mini+, printing with Inland 1.75mm PLA filament. This printer's print bed is a 7 in square, which is just smaller than the impeller's diameter of 7.5 in. To use the Prusa Mini+, we cut our impeller file into four identical parts, as in the drawing file below. These four parts each had a mass of 40.01 grams, resulting in a total combined mass of 164.04 grams. 
 
-<img src="/Images/Impeller Quarter Drawing.png">
+<img src="Impeller Quarter Drawing.png">
 
 Once these were printed, the triangular faces were glued together using E6000 to form the full impeller, as shown in this photograph.
 
-<img src="/Images/Impeller Photo.png">
+<img src="Impeller Photo.png">
 
 Another key component of the physical washing system is the motor mount. As mentioned previously, we chose to use a section of PVC pipe as a central shaft that would connect our impeller to the motor. To rotate this shaft from the motor key, we designed a fitting for the end of the pipe that has a hole to insert the motor shaft. This part was printed using the Prusa Mini+, with Inland 1.75mm PLA. The total mass of the print was 13.18 grams.
 
-<img src="/Images/Motor Mount Drawing.png">
+<img src="Motor Mount Drawing.png">
 
 
 ## Testing
