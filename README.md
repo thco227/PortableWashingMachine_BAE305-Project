@@ -24,7 +24,7 @@ The goal of our project was to create a portable washing machine. The portable w
 * ___ Connectors
 * Crimper
 * 2 Gallon Bucket with Lid
-* 3D Printed Agitator
+* 3D Printed Impeller
 * 3D Printed Shaft Connector
 * ___ od. PVC Pipe
 *
@@ -51,6 +51,23 @@ The main loop was comprised of many if and else statements. The blanketing if st
 To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, waiting a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. A function for the beep at the end of the cycle was also created which included the tone command so the pin, frequency, and duration could be selected.
 
 #### 3D Printing Design
+For the inner workings of the machine, we researched actual appliances. Commercially available washing machines most often employ one of two washing methods: agitation or impeller washing. In an agitation washing machine, a central shaft with vanes rotates to spin clothes in water and wash them. An impeller is a low disc with fins that sits at the bottom of the basket, and impeller washing uses this structure to wash clothes. The design takes advantage of the friction generated between the articles of clothing to wash them and uses less water than an agitation machine does. For our small scale machine, we wanted to optimize our water use, so the impeller design was the ideal choice. When we took into consideration the materials we would be using, we realized it would be far easier to 3D print an impeller than a central agitator.
+
+Our impeller design is simple: it's a flat disc that rises in the center to form a low cone. This center is hollow to allow our central shaft, a PVC pipe with an outer diameter of approximately 1 in, to be inserted. From the center cone, eight identical vanes protrude, lofting down to meet the edge of the disc. Commercial impellers tend to have six of these vanes, but we chose to use either for a more sturdy impeller, as, at the time of designing this part, we were unsure how much stress the impeller would be under. Future iterations of this project should test different impeller designs. The eight-vaned impeller part file is shown below.
+
+<img src="/Images/Impeller Drawing.png">
+
+To create this part, we used the 3D printers available at the Innovation Center at the University of Kentucky. The printer used was the Prusa Mini+, printing with Inland 1.75mm PLA filament. This printer's print bed is a 7 in square, which is just smaller than the impeller's diameter of 7.5 in. To use the Prusa Mini+, we cut our impeller file into four identical parts, as in the drawing file below. These four parts each had a mass of 40.01 grams, resulting in a total combined mass of 164.04 grams. 
+
+<img src="/Images/Impeller Quarter Drawing.png">
+
+Once these were printed, the triangular faces were glued together using E6000 to form the full impeller, as shown in this photograph.
+
+<img src="/Images/Impeller Photo.png">
+
+Another key component of the physical washing system is the motor mount. As mentioned previously, we chose to use a section of PVC pipe as a central shaft that would connect our impeller to the motor. To rotate this shaft from the motor key, we designed a fitting for the end of the pipe that has a hole to insert the motor shaft. This part was printed using the Prusa Mini+, with Inland 1.75mm PLA. The total mass of the print was 13.18 grams.
+
+<img src="/Images/Motor Mount Drawing.png">
 
 
 ## Testing
