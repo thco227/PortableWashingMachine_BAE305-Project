@@ -43,7 +43,7 @@ The design of the circuit also inlcuded a piezo buzzer and a button. They were c
 
 To help make the schematic easier to read, the wires leading to ground are highlighted in red, the wires connected to power are highlighted in green, and the wires connected to a pin are various colors of blue.
 
-![image](https://user-images.githubusercontent.com/128632699/232823813-89ae316f-8355-4b40-ac3e-f8ee164222d1.png)
+![image](https://user-images.githubusercontent.com/128632699/232825480-48f45489-9004-4147-b99f-dab62197959b.png)
 
 
 #### Code
