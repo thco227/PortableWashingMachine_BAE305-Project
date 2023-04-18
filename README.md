@@ -32,7 +32,7 @@ The goal of our project was to create a portable washing machine. The portable w
 ### Design
 
 #### Physical Design
-When first creating the design for the washing machine a five gallon bucket was the selected size for the unit. However, after calcuating the torque needed to move that much water plus clothing and considering the voltage requirements and prices, a size reevaluation occured. A five gallon bucket half full of water was estimated at about 8 pounds without the weight of clothing. With a half foot of diameter estimated, aroudn 4 lb-ft of torque would be needed at the minimum. The motors rated at this torque were very expensive and often required higher voltages. In the end, a 2 gallon bucket was decided on, with the intention to not fill it completely. Based on the size adjustment, a motor was chosen. The LS-00086 DC motor was chosen due to its low price, low voltage, and decent torque rating of 2.18 lb.-ft.
+When first creating the design for the washing machine a five gallon bucket was the selected size for the unit. However, after calcuating the torque needed to move that much water plus clothing and considering the voltage requirements and prices, a size reevaluation occured. A five gallon bucket half full of water was estimated at about 8 pounds without the weight of clothing. With a half foot of diameter estimated, around 4 lb-ft of torque would be needed at the minimum. The motors rated at this torque were very expensive and often required higher voltages. In the end, a 2 gallon bucket was decided on, with the intention to not fill it completely. Based on the size adjustment, a motor was chosen. The LS-00086 DC motor was chosen due to its low price, low voltage, and decent torque rating of 2.18 lb.-ft.
 
 #### Circuit Design
 When designing the washing machine, an important factor was being able to control the operation of the pumps, motor, and valve, which all operated at 12 volts DC. This voltage could not be supplied from the RedBoard alone, so relays were used to switch them on and off. The components of the washing machine were connected to the switch connected terminals on the relay. A 12 volt supply was connected to these terminals as well. When the relay was turned on, the switch would close, allowing the 12 volts to flow to ground, and subsequently turning on the desired component. 
@@ -41,7 +41,10 @@ To turn the relay on and off, a controllable signal was needed on the non-switch
 
 The design of the circuit also inlcuded a piezo buzzer and a button. They were connected to the RedBoard via pins 5 and 2 respectively. When pin 5 sent out a signal, the buzzer would play a tone. Pin 2, whcih was connectted to the button was set to input pullup mode. This meant that the the pin would read high until the button was pressed, then it would read low. The input pullup resistor mode was used to prevent floating values.  
 
-PUT IN SCHEMATIC HERE
+To help make the schematic easier to read, the wires leading to ground are highlighted in red, the wires connected to power are highlighted in green, and the wires connected to a pin are various colors of blue.
+
+![image](https://user-images.githubusercontent.com/128632699/232823813-89ae316f-8355-4b40-ac3e-f8ee164222d1.png)
+
 
 #### Code
 The code that operated the circuit was composed of if and else if statements. First, the pins were set as constant integer variables. The variable "CycleType" was also initialized as a string so it could hold other strings. In the void setup loop, the all pinmodes except the pin for the button were set to output. The button pin was set to input pullup. In this loop, serial connection was aslo created by using the Serial.begin command and setting the baud rate to 9600. Finally, the setup loop was concluded by displaying a message to prompt user input to choose a cycle type.
