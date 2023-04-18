@@ -2,7 +2,7 @@
 The following report contains the documentaion of the construction of a portable washing machine for the class BAE 305. The  following people contributed to the project: Tiffany Coogle, Maggie Barnes, Elyssa Roberts, and Hunter Walters.
 
 ## Summary
-The goal of our project was to create a portable washing machine. The portable washing machine is applicable for situations in which the user has only a few small items of clothing to wash, and does not want to use a full size washing machine for them. Because of this, the portable washing machine that was created is most suitable for items such as socks, underwear, etc. The portable washing machine body is made from a 2 gallon bucket, and contains two pumps, a valve, a motor, and a 3D printed agitator. A RedBoard was used to control the operation of each component of the washing machine, and was mounted to the ________ of the system. The washing machine has three cycles: 1, 2, and 3 minutes, which each fill and drain twice to wash the clothes, remove the dirty water, then rinse. The user can select the desired cycle by inputing their selection into the serial monitor of the computer connected to the RedBoard. Then, when the user is ready, a button can be used to start the cycle. At the end of the cycle, a buzzer beeps to notify the user to remove their clothes from the washing machine. Should the user need to stop the cyle beofre the specified duration, the button can be pressed again to stop the cycle midway. This project was initiated in January 2023 and progess was tracked using the SCUM method. The projected reached complettion on _____ and the following results were found _____ .
+The goal of our project was to create a portable washing machine. The portable washing machine is applicable for situations in which the user has only a few small items of clothing to wash, and does not want to use a full size washing machine for them. Because of this, the portable washing machine that was created is most suitable for items such as socks, underwear, etc. The portable washing machine body is made from a 2 gallon bucket, and contains two pumps, a valve, a motor, and a 3D printed agitator. A RedBoard was used to control the operation of each component of the washing machine, and was mounted to the ________ of the system. The washing machine has three cycles: 1, 2, and 3 minutes, which each fill and drain twice to wash the clothes, remove the dirty water, then rinse. The user can select the desired cycle by inputing their selection into the serial monitor of the computer connected to the RedBoard. Then, when the user is ready, a button can be used to start the cycle. At the end of the cycle, a buzzer beeps to notify the user to remove their clothes from the washing machine. Should the user need to stop the cyle before the specified duration, the button can be pressed again to stop the cycle midway. This project was initiated in January 2023 and progess was tracked using the SCUM method. The projected reached complettion on _____ and the following results were found _____ .
 
 ## Design Description 
 
@@ -53,10 +53,18 @@ The main loop was comprised of many if and else statements. The blanketing if st
 
 To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, waiting a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. A function for the beep at the end of the cycle was also created which included the tone command so the pin, frequency, and duration could be selected.
 
-#### 3D Printing Design
+#### Laser Cut Design
 
+The initial plan for the stand that would hold the bucket up was to 3D print. With the design having a diameter right above 9 inches, an industrial size printer would have been needed to preform the print. Then considering a new way to print smaller peices and glue them together, the cost and time to do so was still not reasonable. The final solution was to laser cut 4 (dimensions) peices, 1 base peice that was (dimensions) with a circle cut out in the middle, and 8 (dimensions) to create legs so that the bucket would be lifted. The circle cut out of the bottom and the legs being added so the bucket was 4 inches off the surface, was to supply room for the motor to be mounted. These components were laser cut from a 11.5 x 23.5 x .25 inch thick peice of wood. When laser cut, divets were added to the edges of the components to help them be glued together with more ease and stability. Gorilla wood glue was used to hold the peices together.
+ 
+!!!!!PICTURE OF PEICES LASER CUT WITH LABELED DIMENSIONS!!!!!
+
+!!!!!PICTURE OF FINAL PRODUCT!!!!!
+
+!!!!!3D DRAWING????!!!!!
 
 ## Testing
+
 #### Construction
 
 
@@ -69,4 +77,4 @@ During the construction of the inital circuit, the position of the relay relativ
 
 ## Design Results Discussion
 
-## Test Results Discussion))
+## Test Results Discussion
