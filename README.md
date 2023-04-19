@@ -61,7 +61,7 @@ To create this part, we used the 3D printers available at the Innovation Center 
 
 <img src="Impeller Quarter Drawing.png">
 
-Once these were printed, the triangular faces were glued together using E6000 to form the full impeller, as shown in this photograph.
+Once these were printed, the triangular faces were glued together using E6000 industrial adhesive to form the full impeller, as shown in this photograph.
 
 <img src="Impeller Photo.png">
 
