@@ -16,9 +16,9 @@ The goal of our project was to create a portable washing machine. The portable w
 * Computer with Arduino IDE downloaded
 * 1 Piezo Buzzer
 * 1 Button
-* 2 ___ pumps
-* ___ vave
-* ___ od. tubing
+* 2 B07X9L5RNS HiLetgo DC Brushless Water Pumps (240L/min)
+* 1 B08KS6FMC7 Gredia N/C DC Solenoid Valve
+* 3/8" od. tubing
 * LS-00086 OSEPP Electronics LTD DC Motor
 * ___ Power Supply
 * ___ Connectors
@@ -32,7 +32,7 @@ The goal of our project was to create a portable washing machine. The portable w
 ### Design
 
 #### Physical Design
-When first creating the design for the washing machine a five gallon bucket was the selected size for the unit. However, after calcuating the torque needed to move that much water plus clothing and considering the voltage requirements and prices, a size reevaluation occured. A five gallon bucket half full of water was estimated at about 8 pounds without the weight of clothing. With a half foot of diameter estimated, around 4 lb-ft of torque would be needed at the minimum. The motors rated at this torque were very expensive and often required higher voltages. In the end, a 2 gallon bucket was decided on, with the intention to not fill it completely. Based on the size adjustment, a motor was chosen. The LS-00086 DC motor was chosen due to its low price, low voltage, and decent torque rating of 2.18 lb.-ft.
+When first creating the design for the washing machine a five gallon bucket was the selected size for the unit. However, after calcuating the torque needed to move that much water plus clothing and considering the voltage requirements and prices, a size reevaluation occured. A five gallon bucket half full of water was estimated at about 8 pounds without the weight of clothing. With a half foot of diameter estimated, around 4 lb-ft of torque would be needed at the minimum. The motors rated at this torque were very expensive and often required higher voltages. In the end, a 2 gallon bucket was decided on, with the intention to not fill it completely. Based on the size adjustment, a motor was chosen. The LS-00086 DC motor was chosen due to its low price, low voltage, and decent torque rating of 2.18 lb.-ft. The B07X9L5RNS brushless DC water pumps were chosen for their pumping capacity (240 L/min), low price, and low voltage/power consumption. Two were purchased: one to pump water in and one to empty the reservoir. In addition to these pumps, a B08KS6FMC7 Gredia normally closed DC solenoid valve was chosen to keep the unprimed outlet pump from continuing to send water into the drain.
 
 #### Circuit Design
 When designing the washing machine, an important factor was being able to control the operation of the pumps, motor, and valve, which all operated at 12 volts DC. This voltage could not be supplied from the RedBoard alone, so relays were used to switch them on and off. The components of the washing machine were connected to the switch connected terminals on the relay. A 12 volt supply was connected to these terminals as well. When the relay was turned on, the switch would close, allowing the 12 volts to flow to ground, and subsequently turning on the desired component. 
