@@ -2,7 +2,7 @@
 The following report contains the documentaion of the construction of a portable washing machine for the class BAE 305. The  following people contributed to the project: Tiffany Coogle, Maggie Barnes, Elyssa Roberts, and Hunter Walters.
 
 ## Summary
-The goal of our project was to create a portable washing machine. The portable washing machine is applicable for situations in which the user has only a few small items of clothing to wash, and does not want to use a full size washing machine for them. Because of this, the portable washing machine that was created is most suitable for items such as socks, underwear, etc. The portable washing machine body is made from a 2 gallon bucket, and contains two pumps, a valve, a motor, and a 3D printed agitator. An Arduino RedBoard was used to control the operation of each component of the washing machine. The washing machine has three cycles: 1, 2, and 3 minutes, which each fill and drain twice to wash the clothes, remove the dirty water, then rinse. The user can select the desired cycle by inputing their selection into the serial monitor of the computer connected to the RedBoard. Then, when the user is ready, a button can be used to start the cycle. At the end of the cycle, a buzzer beeps to notify the user to remove their clothes from the washing machine. Should the user need to stop the cyle before the specified duration, the button can be pressed again to stop the cycle midway. This project was initiated in January 2023 and progess was tracked using the SCUM method. The projected reached complettion on April 20th, 2023 and the following results were found _____ .
+The goal of our project was to create a portable washing machine. The portable washing machine is applicable for situations in which the user has only a few small items of clothing to wash, and does not want to use a full size washing machine for them. Because of this, the portable washing machine that was created is most suitable for items such as socks, underwear, etc. The portable washing machine body is made from a 2 gallon bucket, and contains two pumps, a valve, a motor, and a 3D printed agitator. An Arduino RedBoard was used to control the operation of each component of the washing machine. The washing machine has three cycles: 1, 2, and 3 minutes, which each fill and drain twice to wash the clothes, remove the dirty water, then rinse. The user can select the desired cycle by inputing their selection into the serial monitor of the computer connected to the RedBoard. Then, when the user is ready, a button can be used to start the cycle. At the end of the cycle, a buzzer beeps to notify the user to remove their clothes from the washing machine. Should the user need to stop the cyle before the specified duration, the button can be pressed again to stop the cycle midway. This project was initiated in January 2023 and progess was tracked using the SCUM method. The projected reached complettion on April 20th, 2023. 
 
 ## Design Description 
 
@@ -34,7 +34,11 @@ The goal of our project was to create a portable washing machine. The portable w
 ### Design
 
 #### Physical Design
-When first creating the design for the washing machine a five gallon bucket was the selected size for the unit. However, after calcuating the torque needed to move that much water plus clothing and considering the voltage requirements and prices, a size reevaluation occured. A five gallon bucket half full of water was estimated at about 8 pounds without the weight of clothing. With a half foot of diameter estimated, around 4 lb-ft of torque would be needed at the minimum. The motors rated at this torque were very expensive and often required higher voltages. In the end, a 2 gallon bucket was decided on, with the intention to not fill it completely. Based on the size adjustment, a motor was chosen. The LS-00086 DC motor was chosen due to its low price, low voltage, and torque rating of 2.18 lb.-ft. The B07X9L5RNS brushless DC water pumps were chosen for their pumping capacity (240 L/min), low price, and low voltage/power consumption. Two were purchased: one to pump water in and one to empty the reservoir. In addition to these pumps, a B08KS6FMC7 Gredia normally closed DC solenoid valve was chosen to keep the unprimed outlet pump from continuing to send water into the drain.
+When first creating the design for the washing machine a five gallon bucket was the selected size for the unit. However, after calcuating the torque needed to move that much water plus clothing and considering the voltage requirements and prices, a size reevaluation occured. A five gallon bucket half full of water was estimated at about 8 pounds without the weight of clothing. With a half foot of diameter estimated, around 4 lb-ft of torque would be needed at the minimum. The motors rated at this torque were very expensive and often required higher voltages. In the end, a 2 gallon bucket was decided on, with the intention to not fill it completely. 
+
+Based on the size adjustment, a motor was chosen. The LS-00086 DC motor was chosen due to its low price, low voltage, and torque rating of 2.18 lb.-ft. The B07X9L5RNS brushless DC water pumps were chosen for their pumping capacity (240 L/min), low price, and low voltage/power consumption. Two were purchased: one to pump water in and one to empty the reservoir. In addition to these pumps, a B08KS6FMC7 Gredia normally closed DC solenoid valve was chosen to keep the unprimed outlet pump from continuing to send water into the drain.
+
+
 
 #### Circuit Design
 When designing the washing machine, an important factor was being able to control the operation of the pumps, motor, and valve, which all operated at 12 volts DC. This voltage could not be supplied from the RedBoard alone, so relays were used to switch them on and off. The components of the washing machine were connected to the switch connected terminals on the relay. A 12 volt supply was connected to these terminals as well. When the relay was turned on, the switch would close, allowing the 12 volts to flow to ground, and subsequently turning on the desired component. 
@@ -49,48 +53,127 @@ To help make the schematic easier to read, the wires leading to ground are highl
 
 
 #### Code
-The code that operated the circuit was composed of if and else if statements. First, the pins were set as constant integer variables. The variable "CycleType" was also initialized as a string so it could hold other strings. In the void setup loop, the all pinmodes except the pin for the switch were set to output. The button pin was set to input pullup. In this loop, serial connection was aslo created by using the Serial.begin command and setting the baud rate to 9600. Finally, the setup loop was concluded by displaying a message to prompt user input to choose a cycle type and instructing the user how to use the switch.
+The code that operated the circuit is explained below. First, the pins were set as constant integer variables as shown below.
 
-The main loop was comprised of many if and else statements. The blanketing if statemnt told the program to start if the user input something into the serial monitor. The string variable "CycleType" stored the input unitl "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be trigered. These three loops had varying messages and times to correspond with the cycle type.
+`const int SpeakerPin = 5;`
 
-Before inputing a cycle type into the serial monitor, the user would be prompted to turn the switch toward the resistor on the breadboard if they were ready to start the cycle. With the switch toward the resistor, the pin would read LOW. When the switch was pressed away from the resistor, the pin would read zero. The code used this to create a system in which the cycle could be stopped in the middle. This was accomplished by putting an if statement before each step of the cycle. When the switch was pushed toward the resistor, it would read LOW, and would allow the code to run. If pressed away, the pin would read zero, and the code would stop because the conditions would not be fufilled.
+`const int MotorPin = 7;`
 
- if (digitalRead(OnOffPin)==LOW) fill();
+`const int DrainPin = 8;`
 
-To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, waiting a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. Each cycle type redfined the times for each function to allow to customize the intensity. The fill functions is shown below, however the other functions follow a similar outline, with different pins being set to HIGH.
+`const int PumpPin = 12;`
 
-//FILL FUNCTION
-void fill(){
+`const int ValvePin = 11;`
 
-  //Make sure other components are off
-  digitalWrite(MotorPin, LOW);
-  digitalWrite(ValvePin, LOW);
-  digitalWrite(DrainPin, LOW);
+`const int OnOffPin = 2;`
 
-  //Turn on pump
-  digitalWrite(PumpPin, HIGH); 
+The variable "CycleType" was also initialized as a string so it could hold other strings. This was essential to allow the user's input to be read correctly.
 
-  //Keep the pump on for x seconds 
-  delay(FillTime);
+`String CycleType;`
 
-  //Turn off pump
-  digitalWrite(PumpPin, LOW);
-}
+The following variables set the time to run each component of the washing machine. A "long" variable type, which allows numbers from -2,147,483,648 to 2,147,483,647 to be assigned to it, was used. This allowed for a higher level of variablilty in the cycles. The times could be set to larger numbers than was possible with an integer variable, which only went from -32,768 to 32,767.
 
-A function for the beep at the end of the cycle was also created which included the tone command so the pin, frequency, and duration could be selected. This function was not put within an the if statement on the conditon of the switch, so the user would know if their cycle had ended had they decided to end it midway.
+`long FillTime;`
 
-//END FUNCTION
-void StopBeep() {
+`long SpinTime;`
 
-  //Set all pins to LOW
-  digitalWrite(MotorPin, LOW);
-  digitalWrite(ValvePin, LOW);
-  digitalWrite(DrainPin, LOW);
-  digitalWrite(PumpPin, LOW);
+`long DrainTime;`
 
-  //Have buzzer play tone to signify end of cycle
-  tone(SpeakerPin, 500, 1000);
-}
+`long ValveTime;`
+
+In the void setup loop, the all pinmodes except the pin for the switch were set to output. These pins only needed to output HIGH to activate the transistors.
+
+`pinMode(SpeakerPin, OUTPUT);`
+
+`pinMode(MotorPin, OUTPUT);`
+
+`pinMode(DrainPin, OUTPUT);`
+
+`pinMode(PumpPin, OUTPUT);`
+
+`pinMode(ValvePin, OUTPUT);`
+
+The switch pin was set to input pullup. This allowed the switch to ground a signal when connected.
+
+`pinMode(OnOffPin, INPUT_PULLUP);`
+
+In this loop, serial connection was created by using the Serial.begin command and setting the baud rate to 9600.
+
+`Serial.begin(9600);` 
+
+Finally, the setup loop was concluded by displaying a message to prompt user input to choose a cycle type and instructing the user how to use the switch.
+
+`Serial.println("Push switch towards resistor side before inputing cycle type if ready to start cycle. During the cycle push the switch away from the resistor if you would like the cycle to end.");`
+
+`Serial.println("Choose cycle: Light, Normal, Heavy");`
+
+`Serial.println("L = Light, N = Normal, H = Heavy");`
+
+The main loop was comprised of many if and else statements. The blanketing if statemnt told the program to start if the user input something into the serial monitor. 
+
+`if (Serial.available() > 0)`
+
+The string variable "CycleType" stored the input unitl "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be trigered. These three loops had varying messages and times to correspond with the cycle type. The light cycle is shown below, howver the normal and heavy cycles have the exact same code, except with the time variables set to different times and the messages displaying the corresponding cycle.
+
+`CycleType = Serial.readStringUntil('\n');`
+
+`if (CycleType == "L")`
+
+`Serial.print("You have chosen LIGHT.");`
+
+`FillTime = 15000;`
+
+`DrainTime = 30000;`
+
+`SpinTime = 5000;`
+
+To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, delaying for a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. Each cycle type redefined the times for each function to allow to customize the intensity. The fill functions is shown below, however the other functions follow a similar outline, with different pins being set to HIGH.
+
+
+`void fill(){`
+
+  `digitalWrite(MotorPin, LOW);`
+  
+  `digitalWrite(ValvePin, LOW);`
+  
+  `digitalWrite(DrainPin, LOW);`
+
+  `digitalWrite(PumpPin, HIGH);`
+  
+  `delay(FillTime);`
+
+  `digitalWrite(PumpPin, LOW); }`
+
+A function for the beep at the end of the cycle was also created which included the tone command so the pin, frequency, and duration could be selected. This function was not put within an if statement on the conditon of the switch, so the user would know if their cycle had ended had they decided to end it midway.
+
+`void StopBeep() {`
+
+  `digitalWrite(MotorPin, LOW);`
+  
+  `digitalWrite(ValvePin, LOW);`
+  
+  `digitalWrite(DrainPin, LOW);`
+  
+  `digitalWrite(PumpPin, LOW);`
+  
+  `tone(SpeakerPin, 500, 1000); }`
+
+In each cycle, after the times were defined, the same sequence code would run. The sequece called on various functions created to fill, spin, drain, and turn the valve on and off. Before inputing a cycle type into the serial monitor, the user would be prompted to turn the switch toward the resistor on the breadboard if they were ready to start the cycle. With the switch toward the resistor, the pin would read LOW. When the switch was pressed away from the resistor, the pin would read zero. The code used this to create a system in which the cycle could be stopped in the middle. This was accomplished by putting an if statement before each step of the cycle. When the switch was pushed toward the resistor, it would read LOW, and would allow the code to run. If pressed away, the pin would read zero, and the code would stop because the conditions would not be fufilled.
+
+`if (digitalRead(OnOffPin)==LOW) fill();`
+
+`if (digitalRead(OnOffPin)==LOW) spin();`
+
+`if (digitalRead(OnOffPin)==LOW) drain();`
+
+`if (digitalRead(OnOffPin)==LOW) fill();`
+
+`if (digitalRead(OnOffPin)==LOW) spin();`
+
+`if (digitalRead(OnOffPin)==LOW) drain();`
+
+`StopBeep();`
+
 
 #### 3D Printing Design
 For the inner workings of the machine, we researched actual appliances. Commercially available washing machines most often employ one of two washing methods: agitation or impeller washing. In an agitation washing machine, a central shaft with vanes rotates to spin clothes in water and wash them. An impeller is a low disc with fins that sits at the bottom of the basket, and impeller washing uses this structure to wash clothes. The design takes advantage of the friction generated between the articles of clothing to wash them and uses less water than an agitation machine does. For our small scale machine, we wanted to optimize our water use, so the impeller design was the ideal choice. When we took into consideration the materials we would be using, we realized it would be far easier to 3D print an impeller than a central agitator.
