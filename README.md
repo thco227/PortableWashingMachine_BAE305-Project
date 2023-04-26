@@ -53,140 +53,130 @@ To help make the schematic easier to read, the wires leading to ground are highl
 
 #### Code
 
-The code that operated the circuit was composed of if and else if statements. First, the pins were set as constant integer variables. The variable "CycleType" was also initialized as a string so it could hold other strings. In the void setup loop, all pinmodes except the pin for the switch were set to output. The button pin was set to input pullup. In this loop, serial connection was also created by using the Serial.begin command and setting the baud rate to 9600. Finally, the setup loop was concluded by displaying a message to prompt user input to choose a cycle type and instructing the user how to use the switch.
+The code that operated the circuit was created in Arduino IDE and is explained below. First, the pins were set as constant integer variables as shown below.
+```c
+const int SpeakerPin = 5;
 
-The main loop was comprised of many if and else statements. The blanketing if statement told the program to start if the user input something into the serial monitor. The string variable "CycleType" stored the input unitl "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be triggered. These three loops had varying messages and times to correspond with the cycle type.
+const int MotorPin = 7;
 
-Before inputting a cycle type into the serial monitor, the user would be prompted to turn the switch toward the resistor on the breadboard if they were ready to start the cycle. With the switch toward the resistor, the pin would read LOW. When the switch was pressed away from the resistor, the pin would read zero. The code used this to create a system in which the cycle could be stopped in the middle. This was accomplished by putting an if statement before each step of the cycle. When the switch was pushed toward the resistor, it would read LOW, and would allow the code to run. If pressed away, the pin would read zero, and the code would stop because the conditions would not be fulfilled.
+const int DrainPin = 8;
 
-The code that operated the circuit is explained below. First, the pins were set as constant integer variables as shown below.
+const int PumpPin = 12;
 
-`const int SpeakerPin = 5;`
+const int ValvePin = 11;
 
-`const int MotorPin = 7;`
-
-`const int DrainPin = 8;`
-
-`const int PumpPin = 12;`
-
-`const int ValvePin = 11;`
-
-`const int OnOffPin = 2;`
-
-The variable "CycleType" was also initialized as a string so it could hold other strings. This was essential to allow the user's input to be read correctly.
-
-`String CycleType;`
-
+const int OnOffPin = 2;
+```
+The variable "CycleType" was initialized as a string so it could hold other strings. This was essential to allow the user's input to be read correctly.
+```c
+String CycleType;
+```
 The following variables set the time to run each component of the washing machine. A "long" variable type, which allows numbers from -2,147,483,648 to 2,147,483,647 to be assigned to it, was used. This allowed for a higher level of variablilty in the cycles. The times could be set to larger numbers than was possible with an integer variable, which only went from -32,768 to 32,767.
+```c
+long FillTime;
 
-`long FillTime;`
+long SpinTime;
 
-`long SpinTime;`
+long DrainTime;
 
-`long DrainTime;`
+long ValveTime;
+```
+In the setup loop, the all pinmodes except the switch pin were set to output. These pins needed to output HIGH to activate the transistors.
+```c
+void setup() {
 
-`long ValveTime;`
+pinMode(SpeakerPin, OUTPUT);
 
-In the void setup loop, the all pinmodes except the pin for the switch were set to output. These pins only needed to output HIGH to activate the transistors.
+pinMode(MotorPin, OUTPUT);
 
-`pinMode(SpeakerPin, OUTPUT);`
+pinMode(DrainPin, OUTPUT);
 
-`pinMode(MotorPin, OUTPUT);`
+pinMode(PumpPin, OUTPUT);
 
-`pinMode(DrainPin, OUTPUT);`
-
-`pinMode(PumpPin, OUTPUT);`
-
-`pinMode(ValvePin, OUTPUT);`
-
+pinMode(ValvePin, OUTPUT);
+```
 The switch pin was set to input pullup. This allowed the switch to ground a signal when connected.
-
-`pinMode(OnOffPin, INPUT_PULLUP);`
-
+```c
+pinMode(OnOffPin, INPUT_PULLUP);
+```
 In this loop, serial connection was created by using the Serial.begin command and setting the baud rate to 9600.
-
-`Serial.begin(9600);` 
-
+```c
+Serial.begin(9600);
+```
 Finally, the setup loop was concluded by displaying a message to prompt user input to choose a cycle type and instructing the user how to use the switch.
+```c
+Serial.println("Push switch towards resistor side before inputing cycle type if ready to start cycle. 
+During the cycle push the switch away from the resistor if you would like the cycle to end.");
 
-`Serial.println("Push switch towards resistor side before inputing cycle type if ready to start cycle. During the cycle push the switch away from the resistor if you would like the cycle to end.");`
+Serial.println("Choose cycle: Light, Normal, Heavy");
 
-`Serial.println("Choose cycle: Light, Normal, Heavy");`
+Serial.println("L = Light, N = Normal, H = Heavy");
+}
+```
+The main loop was comprised of many if and else statements. The blanketing if statement told the program to start if the user input something into the serial monitor. 
+```c
+void loop() 
+{
+if (Serial.available() > 0)
+```
+The string variable "CycleType" stored the input until "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be trigered. These three loops had varying messages and times to correspond with the cycle type. The light cycle is shown below, howver the normal and heavy cycles have the exact same code, except with the time variables set to different times and the messages displaying the corresponding cycle. Note that the times are given in milliseconds.
+```c
+CycleType = Serial.readStringUntil('\n');
 
-`Serial.println("L = Light, N = Normal, H = Heavy");`
+if (CycleType == "L")
 
-The main loop was comprised of many if and else statements. The blanketing if statemnt told the program to start if the user input something into the serial monitor. 
+Serial.print("You have chosen LIGHT.");
 
-`if (Serial.available() > 0)`
+FillTime = 15000;
 
-The string variable "CycleType" stored the input unitl "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be trigered. These three loops had varying messages and times to correspond with the cycle type. The light cycle is shown below, howver the normal and heavy cycles have the exact same code, except with the time variables set to different times and the messages displaying the corresponding cycle.
+DrainTime = 30000;
 
-`CycleType = Serial.readStringUntil('\n');`
+SpinTime = 5000;
+```
+To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, delaying for a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. Each cycle type redefined the times for each function to allow to customize the intensity. The fill function is shown below, however the other functions follow a similar outline, with different pins being set to HIGH.
 
-`if (CycleType == "L")`
+```c
+void fill(){
 
-`Serial.print("You have chosen LIGHT.");`
-
-`FillTime = 15000;`
-
-`DrainTime = 30000;`
-
-`SpinTime = 5000;`
-
-To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, delaying for a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. Each cycle type redefined the times for each function to allow to customize the intensity. The fill functions is shown below, however the other functions follow a similar outline, with different pins being set to HIGH.
-
-
-`void fill(){`
-
-  `digitalWrite(MotorPin, LOW);`
+  digitalWrite(MotorPin, LOW);
   
-  `digitalWrite(ValvePin, LOW);`
+  digitalWrite(ValvePin, LOW);
   
-  `digitalWrite(DrainPin, LOW);`
+  digitalWrite(DrainPin, LOW);
 
-  `digitalWrite(PumpPin, HIGH);`
+  digitalWrite(PumpPin, HIGH);
   
-  `delay(FillTime);`
+  delay(FillTime);
 
-  `digitalWrite(PumpPin, LOW); }`
-
-A function for the beep at the end of the cycle was also created which included the tone command so the pin, frequency, and duration could be selected. This function was not put within an if statement on the conditon of the switch, so the user would know if their cycle had ended had they decided to end it midway.
-
-
-`void StopBeep() {`
-
-
-To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor functions were comprised of turning the corresponding pin to high, waiting a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. Each cycle type redefined the times for each function to allow to customize the intensity. The fill functions is shown below, however the other functions follow a similar outline, with different pins being set to HIGH.
-
-  `digitalWrite(MotorPin, LOW);`
-  
-  `digitalWrite(ValvePin, LOW);`
-  
-  `digitalWrite(DrainPin, LOW);`
-  
-  `digitalWrite(PumpPin, LOW);`
-  
-  `tone(SpeakerPin, 500, 1000); }`
-  
+  digitalWrite(PumpPin, LOW); }
+  ```
 
 In each cycle, after the times were defined, the same sequence code would run. The sequece called on various functions created to fill, spin, drain, and turn the valve on and off. Before inputing a cycle type into the serial monitor, the user would be prompted to turn the switch toward the resistor on the breadboard if they were ready to start the cycle. With the switch toward the resistor, the pin would read LOW. When the switch was pressed away from the resistor, the pin would read zero. The code used this to create a system in which the cycle could be stopped in the middle. This was accomplished by putting an if statement before each step of the cycle. When the switch was pushed toward the resistor, it would read LOW, and would allow the code to run. If pressed away, the pin would read zero, and the code would stop because the conditions would not be fufilled.
+```c
+if (digitalRead(OnOffPin)==LOW) fill();
 
-`if (digitalRead(OnOffPin)==LOW) fill();`
+if (digitalRead(OnOffPin)==LOW) spin();
 
-`if (digitalRead(OnOffPin)==LOW) spin();`
+if (digitalRead(OnOffPin)==LOW) drain();
 
-`if (digitalRead(OnOffPin)==LOW) drain();`
+if (digitalRead(OnOffPin)==LOW) fill();
+```
+A function for the beep at the end of the cycle was also created, which included the tone command so the pin, frequency, and duration could be selected. This function was not put within an if statement on the conditon of the switch, so the user would know if their cycle had ended had they decided to end it midway.
 
-`if (digitalRead(OnOffPin)==LOW) fill();`
+```c
+void StopBeep() {
+  digitalWrite(MotorPin, LOW);
+  
+  digitalWrite(ValvePin, LOW);
+  
+  digitalWrite(DrainPin, LOW);
+  
+  digitalWrite(PumpPin, LOW);
 
-
-A function for the beep at the end of the cycle was also created which included the tone command so the pin, frequency, and duration could be selected. This function was not put within an the if statement on the condition of the switch, so the user would know if their cycle had ended had they decided to end it midway.
-
-`if (digitalRead(OnOffPin)==LOW) spin();`
-
-`if (digitalRead(OnOffPin)==LOW) drain();`
-
-`StopBeep();`
+  
+  tone(SpeakerPin, 500, 1000);
+}
+```
 
 
 #### 3D Printing Design
@@ -231,9 +221,10 @@ The initial plan for the stand that would hold the bucket up was to 3D print. Wi
 During the construction of the initial circuit, the position of the relay relative to the transistor was adjusted. At first, the relay was positioned directly after the voltage supply and before the emitter. However, the relay caused a voltage drop before the transistor which was so low, that the voltage difference did not allow current to flow from the power supply to ground. To fix this, the relay was repositioned after the emitter and before the ground. 
 
 #### Pump Flow Rate Testing
-
+The timing of the drain and pump were important in ensuing the washing machine completed a full cycle. The pumps were advertised as having a flow rate of 240L/hr. To test the flow rate, the pumps were set to run for a given amount of time, and the water was collected in a graduated cylinder. The testing resulted in a flow rate of about 140 L/hr. This reduction in flow rate was most likely due to the tubing attached to the pump, causing the water to slow. 
 
 #### Cycle Testing
+To run the entire cycle, the water needed to end at the same level that it started at.
 
 ## Design Results Discussion
 
