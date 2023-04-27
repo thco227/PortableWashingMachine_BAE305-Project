@@ -244,6 +244,7 @@ To test the pumping system we connected tubing to the pumps and filled one bucke
 
 #### Buzzer
 To test the buzzer system that goes off at the end of each cycle, we ran all three types of cycles and made sure the buzzer successfully went off at the end of each one.
+
 <img src="Buzzer.png" height="300">
 
 #### Physical Components 
