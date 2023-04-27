@@ -209,7 +209,7 @@ Once these were printed, the triangular faces were glued together using E6000 in
 Another key component of the physical washing system is the motor mount. As mentioned previously, we chose to use a section of PVC pipe as a central shaft that would connect our impeller to the motor. To rotate this shaft from the motor key, we designed a fitting for the end of the pipe that has a hole to insert the motor shaft. This part was printed using the Prusa Mini+, with Inland 1.75mm PLA. The total mass of the print was 13.18 grams. The images show our drawing file and photos of the final print.
 
 <img src="Motor Mount Drawing.png" height="300">
-<img src="Motor Mount Photo.jpg" height="300"><img src="Motor Mount Photo(2).jpg" height="300"> <img src="Motor Mount Photo(3).jpg" height="300">
+<img src="Motor Mount Photo.jpg" height="300">
 =======
 #### Laser Cut Design
 
