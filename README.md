@@ -233,7 +233,7 @@ To run the entire cycle, the water needed to end at the same level that it start
 #### Motor
 To test the motor that controlled the agitator we ran just that part of the code to confirm the motor would spin the agitator correctly. After running the code we could confirm the motor was indeed working correctly at an efficient speed.
 
-<img src="Motor.png" height="300">
+<img src="Motor.png" height="200">
 
 #### Pumping System
 To test the pumping system we connected tubing to the pumps and filled one bucket with water. The tubes ran from the bucket with water to the main system, and back to the bucket of water. When testing we ran our code and were able to confirm that the pumps and tubing system were indeed able to takewater from the water bucket, fill the main system, then empty the main system back to the water bucket.
