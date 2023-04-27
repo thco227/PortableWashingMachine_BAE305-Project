@@ -210,7 +210,7 @@ The initial plan for the stand that would hold the bucket up was to 3D print. Wi
 
 !!!!!3D DRAWING????!!!!!
 
-<img src="![image](https://user-images.githubusercontent.com/128632699/234920913-ea3b110e-f991-494c-a286-65586017bc9c.png)" height="300">
+![image](https://user-images.githubusercontent.com/128632699/234920913-ea3b110e-f991-494c-a286-65586017bc9c.png)
 
 ## Testing
 
