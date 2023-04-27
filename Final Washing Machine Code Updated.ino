@@ -11,16 +11,16 @@ const int PumpPin = 12;
 const int ValvePin = 11;
 
 //Set up on/off switch pin
-const byte OnOffPin = 2;
+const int OnOffPin = 2;
 
 //Set the variable to a string type
 String CycleType;
 
 //create variables for time to run components
-int FillTime;
-int SpinTime;
-int DrainTime;
-int ValveTime;
+long FillTime;
+long SpinTime;
+long DrainTime;
+long ValveTime;
 
 
 //FILL FUNCTION
@@ -141,9 +141,9 @@ void loop()
       Serial.print("You have chosen LIGHT.");
       
       //Set the fill and draintime to 30 and 29 seconds, set spin time to 30 seconds
-      FillTime = 30000;
-      DrainTime = 29000;
-      SpinTime = 30000;
+      FillTime = 15000;
+      DrainTime = 30000;
+      SpinTime = 5000;
 
     
 
@@ -168,9 +168,9 @@ void loop()
       Serial.print("You have chosen MEDIUM.");
 
       //Set the fill and draintime to 30 and 29 seconds, set spin time to 45 seconds
-      FillTime = 30000;
-      DrainTime = 29000;
-      SpinTime = 45000;
+      FillTime = 15000;
+      DrainTime = 30000;
+      SpinTime = 10000;
 
     
 
@@ -194,9 +194,9 @@ void loop()
       Serial.print("You have chosen HEAVY.");
 
       //Set the fill and draintime to 30 and 29 seconds, set spin time to 60 seconds
-      FillTime = 30000;
-      DrainTime = 29000;
-      SpinTime = 60000;
+      FillTime = 15000;
+      DrainTime = 30000;
+      SpinTime = 15000;
 
 
       //Actual cycle: fills, spins, then drains twice
