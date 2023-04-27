@@ -237,6 +237,8 @@ To test the motor that controlled the agitator we ran just that part of the code
 #### Pumping System
 To test the pumping system we connected tubing to the pumps and filled one bucket with water. The tubes ran from the bucket with water to the main system, and back to the bucket of water. When testing we ran our code and were able to confirm that the pumps and tubing system were indeed able to takewater from the water bucket, fill the main system, then empty the main system back to the water bucket.
 
+![Pump Testing Data](https://user-images.githubusercontent.com/128632699/234917565-806b4ccf-d7b0-422a-b616-40089b56d7a7.JPG)
+
 #### Buzzer
 To test the buzzer system that goes off at the end of each cycle, we ran all three types of cycles and made sure the buzzer successfully went off at the end of each one.
 
