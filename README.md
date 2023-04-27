@@ -223,10 +223,11 @@ During the construction of the initial circuit, the position of the relay relati
 The timing of the drain and pump were important in ensuing the washing machine completed a full cycle. The pumps were advertised as having a flow rate of 240L/hr. To test the flow rate, the pumps were set to run for a given amount of time, and the water was collected in a graduated cylinder. The testing resulted in a flow rate of about 140 L/hr. This reduction in flow rate was most likely due to the tubing attached to the pump, causing the water to slow. 
 
 #### Cycle Testing
-To run the entire cycle, the water needed to end at the same level that it started at.
+To run the entire cycle, the water needed to end at the same level that it started at. We trouble shooted this issue by running the drain and fill functions for different amounts of time. We found that the drain time needed to be roughly double the fill time.
 
 
 ## Design Results Discussion
+After completing the project, if we wanted to improve the washing machine to be a fully functional we would do the following. The circuitry would need to be contained and a battery pack could be used as opposed to a DC power supply. We would also include a level sensor to ensure that when the off switch was flipped, the resevoir would be completely drained for the next user. 
 
 ## Test Results Discussion
 
