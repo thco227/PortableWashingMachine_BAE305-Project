@@ -30,7 +30,7 @@ The goal of our project was to create a portable washing machine. The portable w
 * 3D Printed Shaft Connector
 * 1" od. PVC Pipe
 * Hand Saw
-* Kroger 1 Gallon Chocolate Icecream Bucket
+* Kroger 1 Gallon Chocolate Ice Cream Bucket
 * 1 set of Alligator Probes
 
 ### Design
@@ -73,7 +73,7 @@ The variable "CycleType" was initialized as a string so it could hold other stri
 ```c
 String CycleType;
 ```
-The following variables set the time to run each component of the washing machine. A "long" variable type, which allows numbers from -2,147,483,648 to 2,147,483,647 to be assigned to it, was used. This allowed for a higher level of variablilty in the cycles. The times could be set to larger numbers than was possible with an integer variable, which only went from -32,768 to 32,767.
+The following variables set the time to run each component of the washing machine. A "long" variable type, which allows numbers from -2,147,483,648 to 2,147,483,647 to be assigned to it, was used. This allowed for a higher level of variability in the cycles. The times could be set to larger numbers than was possible with an integer variable, which only went from -32,768 to 32,767.
 ```c
 long FillTime;
 
@@ -121,7 +121,7 @@ void loop()
 {
 if (Serial.available() > 0)
 ```
-The string variable "CycleType" stored the input until "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be trigered. These three loops had varying messages and times to correspond with the cycle type. The light cycle is shown below, howver the normal and heavy cycles have the exact same code, except with the time variables set to different times and the messages displaying the corresponding cycle. Note that the times are given in milliseconds.
+The string variable "CycleType" stored the input until "\n" was found, which equated to the user pressing the enter key. Depending on the user input, three different if or else if statements could be triggered. These three loops had varying messages and times to correspond with the cycle type. The light cycle is shown below, however the normal and heavy cycles have the exact same code, except with the time variables set to different times and the messages displaying the corresponding cycle. Note that the times are given in milliseconds.
 ```c
 CycleType = Serial.readStringUntil('\n');
 
@@ -135,7 +135,7 @@ DrainTime = 30000;
 
 SpinTime = 5000;
 ```
-To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor fucntions were comprised of turning the corresponding pin to high, delaying for a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. Each cycle type redefined the times for each function to allow to customize the intensity. The fill function is shown below, however the other functions follow a similar outline, with different pins being set to HIGH.
+To easily adjust and call upon the major actions of the washing machine, functions were created. Fill, drain, valve, and motor functions were comprised of turning the corresponding pin to high, delaying for a set time, and then turning the pin to low. By setting the time in each function to a variable, the times for each cycle type could be easily adjusted. Each cycle type redefined the times for each function to allow to customize the intensity. The fill function is shown below, however the other functions follow a similar outline, with different pins being set to HIGH.
 
 ```c
 void fill(){
@@ -153,7 +153,7 @@ void fill(){
   digitalWrite(PumpPin, LOW); }
   ```
 
-In each cycle, after the times were defined, the same sequence code would run. The sequece called on various functions created to fill, spin, drain, and turn the valve on and off. Before inputing a cycle type into the serial monitor, the user would be prompted to turn the switch toward the resistor on the breadboard if they were ready to start the cycle. With the switch toward the resistor, the pin would read LOW. When the switch was pressed away from the resistor, the pin would read zero. The code used this to create a system in which the cycle could be stopped in the middle. This was accomplished by putting an if statement before each step of the cycle. When the switch was pushed toward the resistor, it would read LOW, and would allow the code to run. If pressed away, the pin would read zero, and the code would stop because the conditions would not be fufilled.
+In each cycle, after the times were defined, the same sequence code would run. The sequence called on various functions created to fill, spin, drain, and turn the valve on and off. Before inputing a cycle type into the serial monitor, the user would be prompted to turn the switch toward the resistor on the breadboard if they were ready to start the cycle. With the switch toward the resistor, the pin would read LOW. When the switch was pressed away from the resistor, the pin would read zero. The code used this to create a system in which the cycle could be stopped in the middle. This was accomplished by putting an if statement before each step of the cycle. When the switch was pushed toward the resistor, it would read LOW, and would allow the code to run. If pressed away, the pin would read zero, and the code would stop because the conditions would not be fulfilled.
 ```c
 if (digitalRead(OnOffPin)==LOW) fill();
 
@@ -163,7 +163,7 @@ if (digitalRead(OnOffPin)==LOW) drain();
 
 if (digitalRead(OnOffPin)==LOW) fill();
 ```
-A function for the beep at the end of the cycle was also created, which included the tone command so the pin, frequency, and duration could be selected. This function was not put within an if statement on the conditon of the switch, so the user would know if their cycle had ended had they decided to end it midway.
+A function for the beep at the end of the cycle was also created, which included the tone command so the pin, frequency, and duration could be selected. This function was not put within an if statement on the condition of the switch, so the user would know if their cycle had ended had they decided to end it midway.
 
 ```c
 void StopBeep() {
@@ -220,14 +220,14 @@ The initial plan for the stand that would hold the bucket up was to 3D print. Wi
 During the construction of the initial circuit, the position of the relay relative to the transistor was adjusted. At first, the relay was positioned directly after the voltage supply and before the emitter. However, the relay caused a voltage drop before the transistor which was so low, that the voltage difference did not allow current to flow from the power supply to ground. To fix this, the relay was repositioned after the emitter and before the ground. 
 
 #### Pump Flow Rate Testing
-The timing of the drain and pump were important in ensuing the washing machine completed a full cycle. The pumps were advertised as having a flow rate of 240L/hr. To test the flow rate, the pumps were set to run for a given amount of time, and the water was collected in a graduated cylinder. The testing resulted in a flow rate of about 140 L/hr. This reduction in flow rate was most likely due to the tubing attached to the pump, causing the water to slow. 
+The timing of the drain and pump were important in ensuring the washing machine completed a full cycle. The pumps were advertised as having a flow rate of 240L/hr. To test the flow rate, the pumps were set to run for a given amount of time, and the water was collected in a graduated cylinder. The testing resulted in a flow rate of about 140 L/hr. This reduction in flow rate was most likely due to the tubing attached to the pump, causing the water to slow. 
 
 #### Cycle Testing
 To run the entire cycle, the water needed to end at the same level that it started at. We trouble shooted this issue by running the drain and fill functions for different amounts of time. We found that the drain time needed to be roughly double the fill time.
 
 
 ## Design Results Discussion
-After completing the project, if we wanted to improve the washing machine to be a fully functional we would do the following. The circuitry would need to be contained and a battery pack could be used as opposed to a DC power supply. We would also include a level sensor to ensure that when the off switch was flipped, the resevoir would be completely drained for the next user. 
+After completing the project, if we wanted to improve the washing machine to be a fully functional we would do the following. The circuitry would need to be contained and a battery pack could be used as opposed to a DC power supply. We would also include a level sensor to ensure that when the off switch was flipped, the reservoir would be completely drained for the next user. 
 
 ## Test Results Discussion
 
@@ -237,7 +237,7 @@ To test the motor that controlled the agitator we ran just that part of the code
 <img src="Motor.png" height="200">
 
 #### Pumping System
-To test the pumping system we connected tubing to the pumps and filled one bucket with water. The tubes ran from the bucket with water to the main system, and back to the bucket of water. When testing we ran our code and were able to confirm that the pumps and tubing system were indeed able to takewater from the water bucket, fill the main system, then empty the main system back to the water bucket.
+To test the pumping system we connected tubing to the pumps and filled one bucket with water. The tubes ran from the bucket with water to the main system, and back to the bucket of water. When testing we ran our code and were able to confirm that the pumps and tubing system were indeed able to take water from the water bucket, fill the main system, then empty the main system back to the water bucket.
 
 ![Pump Testing Data](https://user-images.githubusercontent.com/128632699/234917565-806b4ccf-d7b0-422a-b616-40089b56d7a7.JPG)
 <img src="Pump.png" height="150">
@@ -249,6 +249,6 @@ To test the buzzer system that goes off at the end of each cycle, we ran all thr
 <img src="Buzzer.png" height="300">
 
 #### Physical Components 
-To test to make sure all of our physical components worked together, we had to bring all of the parts of the project into the lab and put it together. After assembling we were able to confirm all the peices fit together. Once getting all the peices fitted together properly we ran a full cycle to make sure everything ran smoothly. The cycle was ran and completed successfully.
+To test to make sure all of our physical components worked together, we had to bring all of the parts of the project into the lab and put it together. After assembling we were able to confirm all the pieces fit together. Once getting all the pieces fitted together properly we ran a full cycle to make sure everything ran smoothly. The cycle was ran and completed successfully.
 ![image](https://user-images.githubusercontent.com/128632699/234920149-0c92d2e3-cc3c-47da-b917-77c790f5594f.png)
 
