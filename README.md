@@ -248,4 +248,5 @@ To test the buzzer system that goes off at the end of each cycle, we ran all thr
 
 #### Physical Components 
 To test to make sure all of our physical components worked together, we had to bring all of the parts of the project into the lab and put it together. After assembling we were able to confirm all the peices fit together. Once getting all the peices fitted together properly we ran a full cycle to make sure everything ran smoothly. The cycle was ran and completed successfully.
+![image](https://user-images.githubusercontent.com/128632699/234920149-0c92d2e3-cc3c-47da-b917-77c790f5594f.png)
 
