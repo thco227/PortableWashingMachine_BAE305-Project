@@ -4,6 +4,8 @@ The following report contains the documentation of the construction of a portabl
 ## Summary
 The goal of our project was to create a portable washing machine. The portable washing machine is applicable for situations in which the user has only a few small items of clothing to wash, and does not want to use a full size washing machine for them. Because of this, the portable washing machine that was created is most suitable for items such as socks, underwear, etc. The portable washing machine body is made from a 2 gallon bucket, and contains two pumps, a valve, a motor, and a 3D printed impeller. An Arduino RedBoard was used to control the operation of each component of the washing machine. The washing machine has three cycles: 1, 2, and 3 minutes, which each fill and drain twice to wash the clothes, remove the dirty water, then rinse. The user can select the desired cycle by inputting their selection into the serial monitor of the computer connected to the RedBoard. Then, when the user is ready, a switch can be used to start the cycle. At the end of the cycle, a buzzer beeps to notify the user to remove their clothes from the washing machine. Should the user need to stop the cycle before the specified duration, the switch can be used to stop the cycle midway. This project was initiated in January 2023 and progress was tracked using the Scrum project development method. The complete project was presented for assessment on April 20th, 2023, and all features on our project backlog were demonstrated successfully.
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=BKz9ElXcXlw" target="_blank"><img src="http://img.youtube.com/vi/BKz9ElXcXlw/0.jpg" width="240" height="180" /></a>
+
 ## Design Description 
 
 ### Materials
@@ -203,7 +205,7 @@ To create this part, we used the 3D printers available at the Innovation Center 
 Once these were printed, the triangular faces were glued together using E6000 industrial adhesive to form the full impeller, as shown in this photograph.
 
 <img src="Impeller Photo.jpg">
-<img src="Impeller Photo(2).jpg">
+<img src="Impeller Photo(2) (1).jpg">
 
 Another key component of the physical washing system is the motor mount. As mentioned previously, we chose to use a section of PVC pipe as a central shaft that would connect our impeller to the motor. To rotate this shaft from the motor key, we designed a fitting for the end of the pipe that has a hole to insert the motor shaft. This part was printed using the Prusa Mini+, with Inland 1.75mm PLA. The total mass of the print was 13.18 grams. The images show our drawing file and photos of the final print.
 
