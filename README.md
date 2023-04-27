@@ -226,6 +226,20 @@ The timing of the drain and pump were important in ensuing the washing machine c
 #### Cycle Testing
 To run the entire cycle, the water needed to end at the same level that it started at.
 
+
 ## Design Results Discussion
 
 ## Test Results Discussion
+
+#### Motor
+To test the motor that controlled the agitator we ran just that part of the code to confirm the motor would spin the agitator correctly. After running the code we could confirm the motor was indeed working correctly at an efficient speed.
+
+#### Pumping System
+To test the pumping system we connected tubing to the pumps and filled one bucket with water. The tubes ran from the bucket with water to the main system, and back to the bucket of water. When testing we ran our code and were able to confirm that the pumps and tubing system were indeed able to takewater from the water bucket, fill the main system, then empty the main system back to the water bucket.
+
+#### Buzzer
+To test the buzzer system that goes off at the end of each cycle, we ran all three types of cycles and made sure the buzzer successfully went off at the end of each one.
+
+#### Physical Components 
+To test to make sure all of our physical components worked together, we had to bring all of the parts of the project into the lab and put it together. After assembling we were able to confirm all the peices fit together. Once getting all the peices fitted together properly we ran a full cycle to make sure everything ran smoothly. The cycle was ran and completed successfully.
+
