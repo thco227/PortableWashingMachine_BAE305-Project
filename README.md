@@ -210,7 +210,7 @@ The initial plan for the stand that would hold the bucket up was to 3D print. Wi
 
 !!!!!3D DRAWING????!!!!!
 
-![image](https://user-images.githubusercontent.com/128632699/234920913-ea3b110e-f991-494c-a286-65586017bc9c.png)
+<img src="Physical Stand picture.png" height="300">
 
 ## Testing
 
@@ -233,18 +233,18 @@ To run the entire cycle, the water needed to end at the same level that it start
 #### Motor
 To test the motor that controlled the agitator we ran just that part of the code to confirm the motor would spin the agitator correctly. After running the code we could confirm the motor was indeed working correctly at an efficient speed.
 
-![image](https://user-images.githubusercontent.com/128632699/234919649-f80057c6-9721-4500-9f46-039b59b15715.png)
+<img src="Motor.png" height="300">
 
 #### Pumping System
 To test the pumping system we connected tubing to the pumps and filled one bucket with water. The tubes ran from the bucket with water to the main system, and back to the bucket of water. When testing we ran our code and were able to confirm that the pumps and tubing system were indeed able to takewater from the water bucket, fill the main system, then empty the main system back to the water bucket.
 
 ![Pump Testing Data](https://user-images.githubusercontent.com/128632699/234917565-806b4ccf-d7b0-422a-b616-40089b56d7a7.JPG)
-![image](https://user-images.githubusercontent.com/128632699/234919778-104a27f8-9f4c-4bef-b895-76b67d5eeef0.png)
-![image](https://user-images.githubusercontent.com/128632699/234919844-d281b1d7-34fd-42bf-85ed-b04b940daa87.png)
+<img src="Pump.png" height="300">
+<img src="Valve.png" height="300">
 
 #### Buzzer
 To test the buzzer system that goes off at the end of each cycle, we ran all three types of cycles and made sure the buzzer successfully went off at the end of each one.
-![image](https://user-images.githubusercontent.com/128632699/234920975-a211e361-7099-472d-bd06-70036be99d4c.png)
+<img src="Buzzer.png" height="300">
 
 #### Physical Components 
 To test to make sure all of our physical components worked together, we had to bring all of the parts of the project into the lab and put it together. After assembling we were able to confirm all the peices fit together. Once getting all the peices fitted together properly we ran a full cycle to make sure everything ran smoothly. The cycle was ran and completed successfully.
