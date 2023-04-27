@@ -208,7 +208,7 @@ The initial plan for the stand that would hold the bucket up was to 3D print. Wi
  
 !!!!!PICTURE OF PEICES LASER CUT WITH LABELED DIMENSIONS!!!!!
 
-!!!!!3D DRAWING????!!!!!
+<img src="3D Stand top view.JPG" height="300"> <img src="3D Stand bottom view.JPG" height="300">
 
 <img src="Physical Stand picture.png" height="300">
 
