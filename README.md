@@ -234,10 +234,14 @@ To run the entire cycle, the water needed to end at the same level that it start
 #### Motor
 To test the motor that controlled the agitator we ran just that part of the code to confirm the motor would spin the agitator correctly. After running the code we could confirm the motor was indeed working correctly at an efficient speed.
 
+![image](https://user-images.githubusercontent.com/128632699/234919649-f80057c6-9721-4500-9f46-039b59b15715.png)
+
 #### Pumping System
 To test the pumping system we connected tubing to the pumps and filled one bucket with water. The tubes ran from the bucket with water to the main system, and back to the bucket of water. When testing we ran our code and were able to confirm that the pumps and tubing system were indeed able to takewater from the water bucket, fill the main system, then empty the main system back to the water bucket.
 
 ![Pump Testing Data](https://user-images.githubusercontent.com/128632699/234917565-806b4ccf-d7b0-422a-b616-40089b56d7a7.JPG)
+![image](https://user-images.githubusercontent.com/128632699/234919778-104a27f8-9f4c-4bef-b895-76b67d5eeef0.png)
+![image](https://user-images.githubusercontent.com/128632699/234919844-d281b1d7-34fd-42bf-85ed-b04b940daa87.png)
 
 #### Buzzer
 To test the buzzer system that goes off at the end of each cycle, we ran all three types of cycles and made sure the buzzer successfully went off at the end of each one.
